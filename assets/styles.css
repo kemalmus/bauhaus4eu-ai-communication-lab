@@ -424,6 +424,25 @@ h1, h2, h3, p { margin-top: 0; }
 .flow-step:hover { background: rgba(207, 239, 243, .65); }
 .flow-step b { display: block; margin-bottom: 11px; color: var(--red); font: 800 10px/1 var(--mono); }
 .flow-step span { font: 900 clamp(11px, 1.1vw, 15px)/1 var(--display); letter-spacing: .02em; }
+.step-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 32px 0 64px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.step-nav-link {
+  min-width: 42%;
+  display: grid;
+  gap: 8px;
+  padding: 16px 0;
+  text-decoration: none;
+}
+.step-nav-next { text-align: right; }
+.step-nav-link small { color: var(--muted); font: 700 10px/1.2 var(--mono); letter-spacing: .1em; }
+.step-nav-link strong { font: 900 clamp(18px, 2vw, 25px)/1 var(--display); text-transform: uppercase; }
+.step-nav-link:hover strong { color: var(--red); }
 .home-actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

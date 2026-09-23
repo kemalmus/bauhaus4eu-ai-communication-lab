@@ -481,6 +481,33 @@ function footer() {
   return '<footer class="footer"><div class="footer-inner"><small>BAUHAUS4EU · AI COMMUNICATION LAB</small><a href="' + hrefFor("") + '">Return home ↗</a></div></footer>';
 }
 
+function stepNavigation(slug) {
+  // Adapt stays out of participant navigation; it remains reachable by its trainer URL.
+  const trainerQuery = new URLSearchParams(window.location.search).get("trainer") === "1" ? "?trainer=1" : "";
+  const stepHref = function (step) { return hrefFor(step) + trainerQuery; };
+  const participantSteps = ["concept", "inspiration", "build", "media", "interaction", "qa"];
+  const steps = slug === "update"
+    ? ["media", "update", "interaction"]
+    : participantSteps;
+  const index = steps.indexOf(slug);
+  const labels = {
+    concept: "Concept",
+    inspiration: "Inspiration",
+    build: "Build",
+    media: "Media Lab",
+    update: "Adapt",
+    interaction: "Interaction",
+    qa: "Final QA"
+  };
+  const previous = index > 0
+    ? '<a class="step-nav-link step-nav-previous" href="' + stepHref(steps[index - 1]) + '"><small>← PREVIOUS</small><strong>' + esc(labels[steps[index - 1]]) + '</strong></a>'
+    : '<a class="step-nav-link step-nav-previous" href="' + hrefFor("") + '"><small>← PREVIOUS</small><strong>Home</strong></a>';
+  const next = index < steps.length - 1
+    ? '<a class="step-nav-link step-nav-next" href="' + stepHref(steps[index + 1]) + '"><small>NEXT →</small><strong>' + esc(labels[steps[index + 1]]) + '</strong></a>'
+    : '<a class="step-nav-link step-nav-next" href="' + hrefFor("") + '"><small>NEXT →</small><strong>Home</strong></a>';
+  return '<nav class="step-navigation" aria-label="Workshop step navigation">' + previous + next + '</nav>';
+}
+
 function hero(number, label, title, intro, home) {
   const art = '<div class="hero-art" aria-hidden="true">' +
     '<div class="art-topline"><span>Campus / future system</span><span>Signal // ' + esc(number) + '</span></div>' +
@@ -683,7 +710,7 @@ function exercisePage(page, slug) {
   main += '<section class="exercise-section"><h2 class="section-heading"><span class="section-code">E /</span>TOOLS</h2>' + toolLinks(page.toolKeys) + '</section>';
   return header(page.number, page.name) +
     hero(page.number, page.name, page.title, page.intro, false) +
-    '<main class="content-wrap" id="main-content"><div class="exercise-layout"><div class="exercise-main">' + main + '</div>' + sidePanel(page) + '</div></main>' +
+    '<main class="content-wrap" id="main-content"><div class="exercise-layout"><div class="exercise-main">' + main + '</div>' + sidePanel(page) + '</div>' + stepNavigation(slug) + '</main>' +
     footer();
 }
 

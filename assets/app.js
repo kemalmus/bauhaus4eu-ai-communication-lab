@@ -7,6 +7,7 @@ const tools = {
   chatgpt: "https://chatgpt.com/",
   claude: "https://claude.ai/",
   elevenlabs: "https://elevenlabs.io/",
+  craftwork: "https://craftwork.design/curated/websites",
   huggingface: "https://huggingface.co/",
   hfImage1: "https://huggingface.co/spaces/black-forest-labs/FLUX.1-schnell",
   hfImage2: "https://huggingface.co/spaces/not-lain/background-removal",
@@ -20,6 +21,7 @@ const toolLabels = {
   chatgpt: "ChatGPT",
   claude: "Claude",
   elevenlabs: "ElevenLabs",
+  craftwork: "Craftwork — curated website designs",
   huggingface: "Hugging Face",
   hfImage1: "FLUX.1 Schnell — image generation",
   hfImage2: "Background Removal — image editing",
@@ -697,6 +699,9 @@ function exercisePage(page, slug) {
   let main = "";
   if (slug === "update") main += section("!", "NEW INFORMATION RECEIVED", updateInfo(), "update-section");
   main += section("A /", "CONTEXT", '<p class="section-copy">' + esc(page.context) + '</p>' + (page.facts ? factsMarkup(page.facts) : ""));
+  if (slug === "inspiration") {
+    main += section("SOURCE /", "CURATED WEBPAGE EXAMPLES", '<p class="section-copy">Browse the gallery for a visual reference, then choose one page to analyse.</p>' + toolLinks(["craftwork"]));
+  }
   main += section("B /", "YOUR MISSION", '<div class="mission-band"><p class="section-copy">' + esc(page.mission) + '</p></div>');
   if (slug === "interaction") main += interactionMarkup();
   else main += promptSections(page.prompts || []);

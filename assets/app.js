@@ -8,9 +8,9 @@ const tools = {
   claude: "https://claude.ai/",
   elevenlabs: "https://elevenlabs.io/",
   huggingface: "https://huggingface.co/",
-  hfImage1: "https://huggingface.co/spaces/",
-  hfImage2: "https://huggingface.co/spaces/",
-  hfTTS1: "https://huggingface.co/spaces/",
+  hfImage1: "https://huggingface.co/spaces/black-forest-labs/FLUX.1-schnell",
+  hfImage2: "https://huggingface.co/spaces/not-lain/background-removal",
+  hfTTS1: "https://huggingface.co/spaces/hexgrad/Kokoro-TTS",
   aiStudio: "https://aistudio.google.com/"
 };
 
@@ -21,9 +21,9 @@ const toolLabels = {
   claude: "Claude",
   elevenlabs: "ElevenLabs",
   huggingface: "Hugging Face",
-  hfImage1: "HF image slot 1 — replace URL",
-  hfImage2: "HF image slot 2 — replace URL",
-  hfTTS1: "HF TTS slot — replace URL",
+  hfImage1: "FLUX.1 Schnell — image generation",
+  hfImage2: "Background Removal — image editing",
+  hfTTS1: "Kokoro TTS — text to speech",
   aiStudio: "Google AI Studio (optional)"
 };
 
@@ -583,9 +583,9 @@ function mediaToolCards() {
     ["IMAGE / IDEAS", "gemini", "Explore image concepts and creative variations."],
     ["VOICE / NARRATION", "elevenlabs", "Create a short spoken teaser or narration."],
     ["SPECIALIST DEMOS", "huggingface", "Browse image, editing, and audio demos."],
-    ["HF SPACE / IMAGE 01", "hfImage1", "Replace this link with a selected image Space."],
-    ["HF SPACE / IMAGE 02", "hfImage2", "Replace this link with a selected image Space."],
-    ["HF SPACE / TTS 01", "hfTTS1", "Replace this link with a selected text-to-speech Space."]
+    ["IMAGE GENERATION", "hfImage1", "Generate images from text prompts with FLUX.1 Schnell."],
+    ["IMAGE EDITING", "hfImage2", "Remove an image background in a focused demo."],
+    ["TEXT TO SPEECH", "hfTTS1", "Turn written text into spoken audio with Kokoro."]
   ];
   return '<div class="media-tool-grid">' + cards.map(function (card) {
     return '<a class="media-tool" href="' + esc(tools[card[1]]) + '" target="_blank" rel="noopener noreferrer">' +

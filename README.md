@@ -35,13 +35,13 @@ Workshop content is grouped in the `pages` object in `assets/app.js`. The confir
 
 At the top of `assets/app.js`, edit the `tools` object. The visible links are generated from this configuration. Change these before the workshop if a destination moves or you want to use a different tool.
 
-The Hugging Face placeholders are:
+The Hugging Face Spaces used by the Media Lab are:
 
 - `hfImage1`
 - `hfImage2`
 - `hfTTS1`
 
-Replace each placeholder address with the specific Hugging Face Space URL you want participants to use. The Media Lab displays these three slots separately. Tool links are suggestions; participants can use a free chat interface they already have access to. Google AI Studio is optional. The workshop does not require a paid account or AI agent.
+The Media Lab displays these three destinations separately: FLUX.1 Schnell for image generation, Background Removal for image editing, and Kokoro TTS for text-to-speech. Tool links are suggestions; participants can use a free chat interface they already have access to. Google AI Studio is optional. The workshop does not require a paid account or AI agent.
 
 ## Change the Future Campus Challenge facts
 
@@ -60,4 +60,3 @@ https://YOUR-USERNAME.github.io/REPOSITORY-NAME/update/
 It is not linked from the home page, page headers, public stage links, or footers. Share that address with participants only when it is time to reveal the project update. The page is a static public URL, so anyone who already knows the address can open it.
 
 Optional trainer notes appear only when a stage URL has `?trainer=1`, for example `.../concept/?trainer=1`.
-

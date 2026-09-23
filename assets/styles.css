@@ -407,7 +407,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .stage-flow {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   margin: 0 0 44px;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
@@ -443,6 +443,18 @@ h1, h2, h3, p { margin-top: 0; }
 .step-nav-link small { color: var(--muted); font: 700 10px/1.2 var(--mono); letter-spacing: .1em; }
 .step-nav-link strong { font: 900 clamp(18px, 2vw, 25px)/1 var(--display); text-transform: uppercase; }
 .step-nav-link:hover strong { color: var(--red); }
+.survey-invitation {
+  max-width: 760px;
+  margin: 52px auto 24px;
+  padding: clamp(24px, 5vw, 54px);
+  border: 1px solid var(--ink);
+  background: rgba(255, 255, 255, .36);
+}
+.survey-invitation .section-heading { margin-top: 15px; }
+.survey-invitation > p:not(.eyebrow) { max-width: 620px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+.survey-code-instruction { margin: 24px 0 4px; }
+.survey-code { margin: 0 !important; color: var(--ink) !important; font: 900 clamp(25px, 4vw, 36px)/1.2 var(--mono) !important; letter-spacing: .12em; }
+.survey-qr { display: block; width: min(100%, 320px); height: auto; margin: 22px auto 0; border: 10px solid white; }
 .home-actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

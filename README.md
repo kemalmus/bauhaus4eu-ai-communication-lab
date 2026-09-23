@@ -27,13 +27,15 @@ There is no build command and no framework to install. The relative stylesheet, 
 
 - `assets/app.js` contains the workshop page content, all prompts, stage flow, case facts, and external tool URLs.
 - `assets/styles.css` contains the shared visual system and responsive layout.
-- `index.html` and each stage folder contain small page shells that select the relevant workshop stage.
+- `index.html` and each stage folder contain small page shells that select the relevant workshop stage, including the final post-training survey page.
 
 Workshop content is grouped in the `pages` object in `assets/app.js`. The confirmed case information used on the concept, build, and home pages is in `caseFacts`. The new information for the Adapt stage is in `updateInfo()` and its impact-analysis prompt is under `pages.update`.
 
 ## External tool links
 
 At the top of `assets/app.js`, edit the `tools` object. The visible links are generated from this configuration. Change these before the workshop if a destination moves or you want to use a different tool.
+
+The final `/survey/` page thanks participants and shows the Mentimeter QR code and entry code from the supplied evaluation slide.
 
 The Hugging Face Spaces used by the Media Lab are:
 

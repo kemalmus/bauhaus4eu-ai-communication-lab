@@ -485,7 +485,7 @@ function stepNavigation(slug) {
   // Adapt stays out of participant navigation; it remains reachable by its trainer URL.
   const trainerQuery = new URLSearchParams(window.location.search).get("trainer") === "1" ? "?trainer=1" : "";
   const stepHref = function (step) { return hrefFor(step) + trainerQuery; };
-  const participantSteps = ["concept", "inspiration", "build", "media", "interaction", "qa"];
+  const participantSteps = ["concept", "inspiration", "build", "media", "interaction", "qa", "survey"];
   const steps = slug === "update"
     ? ["media", "update", "interaction"]
     : participantSteps;
@@ -497,7 +497,8 @@ function stepNavigation(slug) {
     media: "Media Lab",
     update: "Adapt",
     interaction: "Interaction",
-    qa: "Final QA"
+    qa: "Final QA",
+    survey: "Thank You & Survey"
   };
   const previous = index > 0
     ? '<a class="step-nav-link step-nav-previous" href="' + stepHref(steps[index - 1]) + '"><small>← PREVIOUS</small><strong>' + esc(labels[steps[index - 1]]) + '</strong></a>'
@@ -722,7 +723,8 @@ function homePage() {
     ["04", "ENRICH", "media"],
     ["05", "ADAPT", null],
     ["06", "INTERACT", "interaction"],
-    ["07", "CHECK", "qa"]
+    ["07", "CHECK", "qa"],
+    ["08", "FEEDBACK", "survey"]
   ];
   const flowHTML = '<div class="stage-flow" aria-label="Workshop stages">' + flow.map(function (item) {
     const content = '<b>' + item[0] + '</b><span>' + item[1] + '</span>';
@@ -736,7 +738,8 @@ function homePage() {
     ["03", "Build", "build"],
     ["04", "Media Lab", "media"],
     ["06", "Interaction", "interaction"],
-    ["07", "Final QA", "qa"]
+    ["07", "Final QA", "qa"],
+    ["08", "Feedback survey", "survey"]
   ];
   const actionHTML = '<div class="home-actions">' + actions.map(function (item) {
     return '<a class="action-link" href="' + hrefFor(item[2]) + '"><small>' + item[0] + '</small><span>' + esc(item[1]) + '</span><b aria-hidden="true">↗</b></a>';
@@ -748,6 +751,18 @@ function homePage() {
     '<main class="content-wrap" id="main-content">' + statement + flowHTML + casePanel +
     '<section class="exercise-section"><p class="eyebrow">WORKSHOP ROUTES</p><h2 class="section-heading">Choose a stage</h2>' + actionHTML + '</section></main>' +
     footer();
+}
+
+function surveyPage() {
+  return header("08", "THANK YOU") +
+    hero("08", "THANK YOU", "THANK YOU FOR BUILDING WITH US", "Your ideas, questions, and creativity made this workshop what it was.", false) +
+    '<main class="content-wrap" id="main-content"><section class="survey-invitation"><p class="eyebrow">ONE LAST THING / YOUR FEEDBACK</p>' +
+    '<h2 class="section-heading">Help us make the next workshop better.</h2>' +
+    '<p>When you have a few minutes, please fill in our short post-training survey. Your honest feedback helps us understand what worked for you and what we can improve. Thank you for sharing it.</p>' +
+    '<p class="survey-code-instruction">Or go to <strong>menti.com</strong> and enter the code:</p>' +
+    '<p class="survey-code">3465 4338</p>' +
+    '<img class="survey-qr" src="' + rootPath() + 'assets/survey-qr.png" alt="QR code for the post-training evaluation survey">' +
+    '</section>' + stepNavigation("survey") + '</main>' + footer();
 }
 
 function wireCopyButtons() {
@@ -794,7 +809,7 @@ function wireInteractions() {
 
 const pageKey = document.body.getAttribute("data-page") || "home";
 const mount = document.getElementById("workshop-root");
-mount.innerHTML = pageKey === "home" || !pages[pageKey] ? homePage() : exercisePage(pages[pageKey], pageKey);
+  mount.innerHTML = pageKey === "home" ? homePage() : pageKey === "survey" ? surveyPage() : !pages[pageKey] ? homePage() : exercisePage(pages[pageKey], pageKey);
 if (new URLSearchParams(window.location.search).get("trainer") === "1") {
   document.querySelectorAll("[data-trainer]").forEach(function (note) { note.hidden = false; });
 }
